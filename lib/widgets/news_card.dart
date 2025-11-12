@@ -1,48 +1,40 @@
 import 'package:flutter/material.dart';
-// Impor halaman form 
-import 'package:football_news/screens/newslist_form.dart'; 
+import 'package:football_news/screens/menu.dart';
 import 'package:football_news/screens/news_entry_list.dart';
+import 'package:football_news/screens/newslist_form.dart';
 import 'package:football_news/screens/login.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
 
-
-// Kelas Model Data Anda (dipindahkan dari menu.dart)
-class ItemHomepage {
-  final String name;
-  final IconData icon;
-
-  ItemHomepage(this.name, this.icon);
-}
-
-// Widget Card Anda (dipindahkan dari menu.dart dan dimodifikasi)
 class ItemCard extends StatelessWidget {
+  // Menampilkan kartu dengan ikon dan nama.
+
   final ItemHomepage item; 
+
   const ItemCard(this.item, {super.key}); 
 
   @override
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
     return Material(
+      // Menentukan warna latar belakang dari tema aplikasi.
       color: Theme.of(context).colorScheme.secondary,
+      // Membuat sudut kartu melengkung.
       borderRadius: BorderRadius.circular(12),
+
       child: InkWell(
-        // Modifikasi onTap 
+        // Aksi ketika kartu ditekan.
         onTap: () async {
-          // Menampilkan pesan SnackBar (kode Anda yang sudah ada) 
+          // Menampilkan pesan SnackBar saat kartu ditekan.
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
             ..showSnackBar(
               SnackBar(content: Text("Kamu telah menekan tombol ${item.name}!"))
             );
-          
-          // Tambahkan Navigasi 
-          // Cek nama item (sesuai data di menu.dart Anda)
           if (item.name == "Add News") {
-            // TODO: Gunakan Navigator.push untuk ke NewsFormPage 
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const NewsFormPage()),
+              MaterialPageRoute(builder: (context) => NewsFormPage()),
             );
           } else if (item.name == "See Football News") {
               Navigator.push(
@@ -51,8 +43,7 @@ class ItemCard extends StatelessWidget {
                       builder: (context) => const NewsEntryListPage()
                   ),
               );
-          } // Add this after your previous if statements
-          else if (item.name == "Logout") {
+          } else if (item.name == "Logout") {
               // TODO: Replace the URL with your app's URL and don't forget to add a trailing slash (/)!
               // To connect Android emulator with Django on localhost, use URL http://10.0.2.2/
               // If you using chrome,  use URL http://localhost:8000
@@ -80,10 +71,12 @@ class ItemCard extends StatelessWidget {
               }
           }
         },
+        // Container untuk menyimpan Icon dan Text
         child: Container(
           padding: const EdgeInsets.all(8),
           child: Center(
             child: Column(
+              // Menyusun ikon dan teks di tengah kartu.
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
@@ -104,4 +97,5 @@ class ItemCard extends StatelessWidget {
       ),
     );
   }
+
 }

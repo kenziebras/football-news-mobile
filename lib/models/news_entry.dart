@@ -13,11 +13,11 @@ class NewsEntry {
     String title;
     String content;
     String category;
-    String ? thumbnail;
+    String thumbnail;
     int newsViews;
     DateTime createdAt;
     bool isFeatured;
-    dynamic userId;
+    int? userId;
 
     NewsEntry({
         required this.id,

@@ -116,3 +116,9 @@ class InfoCard extends StatelessWidget {
 }
 
 // KELAS ItemHomepage DAN ItemCard DIHAPUS DARI SINI
+class ItemHomepage {
+ final String name;
+ final IconData icon;
+
+ ItemHomepage(this.name, this.icon);
+}

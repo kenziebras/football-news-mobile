@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-// Sesuaikan path ini dengan lokasi file menu.dart Anda setelah dipindah
 import 'package:football_news/screens/menu.dart';
-import 'package:football_news/screens/newslist_form.dart'; 
 import 'package:football_news/screens/news_entry_list.dart';
+import 'package:football_news/screens/newslist_form.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -14,60 +13,55 @@ class LeftDrawer extends StatelessWidget {
         children: [
           const DrawerHeader(
             decoration: BoxDecoration(
-              color: Colors.blue, // 
+              color: Colors.blue,
             ),
             child: Column(
               children: [
                 Text(
-                  'Football News', // 
+                  'Football News',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 30, // 
-                    fontWeight: FontWeight.bold, // 
-                    color: Colors.white, // 
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
                 ),
-                Padding(padding: EdgeInsets.all(10)), // 
-                Text(
-                  "Seluruh berita sepak bola terkini di sini!", // 
-                  // TODO: Tambahkan gaya teks (center, 15, putih, normal) 
+                Padding(padding: EdgeInsets.all(10)),
+                Text("Seluruh berita sepak bola terkini di sini!",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 15,
-                    color: Colors.white,
                     fontWeight: FontWeight.normal,
+                    color: Colors.white,
                   ),
                 ),
               ],
             ),
           ),
-          
-          // --- ROUTING ---
           ListTile(
-            leading: const Icon(Icons.home_outlined), // 
-            title: const Text('Home'), // 
+            leading: const Icon(Icons.home_outlined),
+            title: const Text('Home'),
+            // Bagian redirection ke MyHomePage
             onTap: () {
-              // Navigasi ke halaman utama (MyHomePage) 
               Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  // Gunakan nama kelas halaman utama Anda
-                  builder: (context) => MyHomePage(colorScheme: Theme.of(context).colorScheme), 
-                ),
-              );
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MyHomePage(colorScheme: Theme.of(context).colorScheme,),
+                  ));
             },
           ),
           ListTile(
-            leading: const Icon(Icons.post_add), // 
-            title: const Text('Add News'), // 
+            leading: const Icon(Icons.post_add),
+            title: const Text('Add News'),
+            // Bagian redirection ke NewsFormPage
             onTap: () {
-              //TODO: Buatlah routing ke NewsFormPage di sini 
               Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const NewsFormPage()),
+              context,
+              MaterialPageRoute(builder: (context) => NewsFormPage()),
               );
             },
           ),
+          // Add this ListTile in your drawer
           ListTile(
               leading: const Icon(Icons.add_reaction_rounded),
               title: const Text('News List'),
@@ -79,7 +73,6 @@ class LeftDrawer extends StatelessWidget {
                   );
               },
           ),
-          // TODO: Buat ListTile baru untuk ke halaman melihat news 
         ],
       ),
     );

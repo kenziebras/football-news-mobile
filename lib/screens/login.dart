@@ -1,8 +1,8 @@
 import 'package:football_news/screens/menu.dart';
 import 'package:flutter/material.dart';
+import 'package:football_news/screens/register.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
-import 'package:football_news/screens/register.dart';
 
 void main() {
   runApp(const LoginApp());
@@ -114,7 +114,7 @@ class _LoginPageState extends State<LoginPage> {
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => MyHomePage(colorScheme: Theme.of(context).colorScheme,) ),
+                                builder: (context) => MyHomePage(colorScheme: Theme.of(context).colorScheme,)),
                           );
                           ScaffoldMessenger.of(context)
                             ..hideCurrentSnackBar()
@@ -179,4 +179,3 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
-
